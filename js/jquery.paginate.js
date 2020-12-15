@@ -6,7 +6,7 @@
             #Defaults
         */
         var defaults = {
-            perPage:               5,              //how many items per page
+            perPage:               2,              //how many items per page
             autoScroll:             false,           //boolean: scroll to top of the container if a user clicks on a pagination link
             scope:                  '',             //which elements to target
             paginatePosition:       ['bottom'],     //defines where the pagination will be displayed
