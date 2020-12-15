@@ -498,7 +498,7 @@ margin-left: -25px
     transform: translate3d(0px, -50%, 0);
   }
 
-@media screen and (max-width: 900px) and (min-width: 400px) {
+@media screen and (max-width: 900px) and (min-width: 200px) {
   body {
     padding-left: 2px;
   }
