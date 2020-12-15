@@ -500,7 +500,10 @@ margin-left: -25px
 
 @media screen and (max-width: 900px) and (min-width: 400px) {
   body {
-    padding-left: 90px;
+    padding-left: 2px;
+  }
+  .menu {
+  	display: none;
   }
 }
 
