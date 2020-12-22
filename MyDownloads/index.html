@@ -1,3 +1,6 @@
+
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -255,7 +258,8 @@ display: block;
     <li class="list-group-item lang" key="instr1">ატვირთეთ პლუგინი საიტზე</li>
     <li class="list-group-item"><l class="lang" key="instr4">main.tpl-ში </l><code>&lt;head&gt;&lt;/head&gt;</code><lang class="lang" key="instr3"> მოათავსეთ</lang> <br><pre class="language-markup"><code>  &lt;link href="{THEME}/ticcix/assets/css/styles.css" type="text/css" rel="stylesheet"&gt;
 </code></pre></li>
-    <li  class="list-group-item lang" key="instr2">attachment.tpl მოათავსეთ შემდეგი კოდი</li>
+<li class="list-group-item"><code>{AJAX}</code> <l class="lang" key="instr8">შემდეგ</l> <lang class="lang" key="instr3"> მოათავსეთ</lang><code>  {ALERT}</code></li>
+    <li class="list-group-item "><lang  class="lang" key="instr2">attachment.tpl მოათავსეთ შემდეგი კოდი</lang>
     <pre class="language-markup"><code>&lt;form method="POST" action=""&gt;
   &lt;input name="name" type="hidden" value="{name}"/&gt;
   &lt;input name="page" type="hidden" value="{link_news}"/&gt;
@@ -408,5 +412,3 @@ color:#fff;
     </style>
   </body>
 </html>
-
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
