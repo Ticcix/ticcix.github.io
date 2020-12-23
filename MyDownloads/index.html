@@ -257,10 +257,10 @@ display: block;
         </br>
           <ul class="list-group">
     <li class="list-group-item lang" key="instr1">ატვირთეთ პლუგინი საიტზე</li>
-    <li class="list-group-item"><l class="lang" key="instr4">main.tpl-ში </l><code>&lt;head&gt;&lt;/head&gt;</code><lang class="lang" key="instr3"> მოათავსეთ</lang> <br><pre class="language-markup"><code>  &lt;link href="{THEME}/ticcix/assets/css/styles.css" type="text/css" rel="stylesheet"&gt;
-</code></pre></li>
+    <li class="list-group-item"><l class="lang" key="instr4">main.tpl-ში </l><code>&lt;head&gt;&lt;/head&gt;</code><lang class="lang" key="instr3"> მოათავსეთ</lang> </li><pre class="language-markup"><code>  &lt;link href="{THEME}/ticcix/assets/css/styles.css" type="text/css" rel="stylesheet"&gt;
+</code></pre>
 <li class="list-group-item"><code>{AJAX}</code> <l class="lang" key="instr8">შემდეგ</l> <lang class="lang" key="instr3"> მოათავსეთ</lang><code>  {ALERT}</code></li>
-    <li class="list-group-item "><lang  class="lang" key="instr2">attachment.tpl მოათავსეთ შემდეგი კოდი</lang>
+    <li class="list-group-item "><lang  class="lang" key="instr2">attachment.tpl მოათავსეთ შემდეგი კოდი</lang></li>
     <pre class="language-markup"><code>&lt;form method="POST" action=""&gt;
   &lt;input name="name" type="hidden" value="{name}"/&gt;
   &lt;input name="page" type="hidden" value="{link_news}"/&gt;
@@ -271,8 +271,8 @@ display: block;
   &lt;input name="size" type="hidden" value="{size}"/&gt;
   &lt;button type="submit" class="ti_footer_button" onclick="window.open('{link}')"&gt; გადმოწერა {name}-{size}&lt;/button&gt;
  &lt;/form&gt;</code></pre>
-    </li>
-    <li class="list-group-item"><l class="lang" key="instr5">ასევე შეგიძლიათ გამოიყენოთ ეს კოდი ონლაინ საჩვენებელ ფაილებზე ამისათვის</l>
+    
+    <li class="list-group-item"><l class="lang" key="instr5">ასევე შეგიძლიათ გამოიყენოთ ეს კოდი ონლაინ საჩვენებელ ფაილებზე ამისათვის</l></li>
 <pre class="language-markup"><code>[allow-online]
         &lt;form method="POST" action=""&gt;
   &lt;input name="name" type="hidden" value="{name}"/&gt;
@@ -285,8 +285,8 @@ display: block;
   &lt;button type="submit" class="ti_footer_button" onclick="window.open('{online-view-link}')"&gt;{name}&lt;/button&gt;
  &lt;/form&gt;
  [/allow-online]</code></pre>
-    </li>
-    <li class="list-group-item"><l class="lang" key="instr6">დამატებით ველით გადმოწერის შემთხვევაში</l> <code>Fullstory.tpl</code>
+    
+    <li class="list-group-item"><l class="lang" key="instr6">დამატებით ველით გადმოწერის შემთხვევაში</l> <code>Fullstory.tpl</code></li>
 <pre class="language-markup"><code>
         &lt;form method="POST" action=""&gt;
   &lt;input name="name" type="hidden" value="{title}"/&gt;
@@ -299,7 +299,7 @@ display: block;
   &lt;button type="submit" class="ti_footer_button" onclick="window.open('[xfvalue_x]')"&gt;{title}&lt;/button&gt;
  &lt;/form&gt;
 </code></pre>
-    </li>
+    
    <li class="list-group-item"><code>[xfvalue_x]</code>- <l class="lang" key="instr7" >X - თქვენი დამატებით ველი</l></li>
  </ul>
  <hr class="pb-4 mb-1">
