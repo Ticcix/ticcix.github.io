@@ -20,6 +20,7 @@
     var arrLang = new Array();
     arrLang['en'] = new Array();
     arrLang['ka'] = new Array();
+    arrLang['ru'] = new Array();
     arrLang['en']['menuinfo'] = 'Information';
     arrLang['en']['menuintr'] = 'Instructions';
     arrLang['en']['page-title-heading'] = 'Review & installation of plugin';
@@ -72,6 +73,32 @@
     arrLang['ka']['instr11'] = 'სტატიის მეტა ტეგები';
     arrLang['ka']['instr12'] = 'RewriteEngine On - ქვემოთ';
     arrLang['ka']['instr13'] = 'მოათავსეთ';
+     arrLang['ru']['menuinfo'] = 'Информация';
+    arrLang['ru']['menuintr'] = 'Инструкция';
+    arrLang['ru']['page-title-heading'] = 'Обзор и установка плагина';
+    arrLang['ru']['vers'] = 'Версия плагина';
+    arrLang['ru']['changes'] = 'Изменить - в файле';
+    arrLang['ru']['changes2'] = 'Ваша директива по дизайну';
+    arrLang['ru']['changes3'] = 'mYsql - извлекаем информацию о статье';
+    arrLang['ru']['shortstory'] = 'Это плагин, который помогает вам показать вашим пользователям документацию статьи - новости - на отдельной странице. Плагин будет полезен разработчикам.';
+    arrLang['ru']['shortstory2'] = 'Плагин использует полностью независимую ссылку. Для простоты';
+    arrLang['ru']['shortstory2plus'] = 'Мы использовали дополнительные поля для отображения демонстрационной страницы';
+    arrLang['ru']['instr1'] = 'Загрузите плагин на сайт';
+    arrLang['ru']['instr2'] = 'Создайте дополнительное поле';
+    arrLang['ru']['instr112'] = 'дополнительные поля Должны быть';
+    arrLang['ru']['instr113'] = 'Вы можете использовать:';
+    arrLang['ru']['instr3'] = 'Дополнительные изменения поля в файле /engine/ticcix/mods/demo.php поле # 15';
+    arrLang['ru']['instr4'] = 'Спрашивайте в начале и конце main.tpl';
+    arrLang['ru']['instr4_1'] = 'Вставить в конце';
+    arrLang['ru']['instr5'] = 'В Fullstory.tpl используйте следующую переадресацию ссылки';
+    arrLang['ru']['instr6'] = 'View.tpl <- Дизайн демонстрационной страницы.';
+    arrLang['ru']['instr7'] = 'Название статьи';
+    arrLang['ru']['instr8'] = 'Ссылка указана в дополнительном поле';
+    arrLang['ru']['instr9'] = 'Адрес статьи';
+    arrLang['ru']['instr10'] = 'Метаописание статьи';
+    arrLang['ru']['instr11'] = 'Мета-теги статьи';
+    arrLang['ru']['instr12'] = 'RewriteEngine On - вниз';
+    arrLang['ru']['instr13'] = 'добавьте';
     $(function() {
       $('.translate').click(function() {
         var lang = $(this).attr('id');
@@ -172,6 +199,7 @@ display: block;
           <a class="list-group-item list-group-item-action lang" key="menuintr" href="#instr">ინსტრუქცია</a>
 <a id="en" class="translate list-group-item list-group-item-action ">English</a>
   <a id="ka" class="translate list-group-item list-group-item-action">ქართული</a>
+  <a id="ru" class="translate list-group-item list-group-item-action">русский</a>
 
   <div class="btn-group group-vertical" style="margin-top: 22px;">
     <a href="https://www.facebook.com/ticcix" class="btn btn-facebook">
@@ -198,7 +226,7 @@ display: block;
           </div>
           <hr class="pb-4 mb-1">
          <div class="video">
-<iframe width="560" height="100%" src="https://youtu.be/5EEXX7gb4BY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="100%" src="https://www.youtube.com/watch?v=5EEXX7gb4BY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
          </div>
         </div>
         <!-- User input-->
@@ -207,22 +235,20 @@ display: block;
             <h4 class="mr-3 lang" key="menuinfo" >ინფორმაცია</h4>
           </div>
           <hr class="pb-4 mb-1">
-          <p class="text-lg"><ul>
-    <li><l class="lang" key="vers">პლაგინის ვერსია</l>:&nbsp;<b>1.0</b>
-        <ul>
-            <li>DLe 13.X - <u style="color:rgb(227,55,55);">^</u></li>
+          <p class="text-lg"><ul class="list-group">
+    <li class="list-group-item"><l class="lang" key="vers">პლაგინის ვერსია</l>:&nbsp;<b>1.0</b></li>
+
+            <li class="list-group-item"> DLe 13.X - <u style="color:rgb(227,55,55);">^</u></li>
+    <li class="list-group-item"><l class="lang" key="changes">ცვილელება - ფაილში</l>
+        <ul class="list-group">
+            <li class="list-group-item"><span style="font-size:1.25em;">engine/engine.php</span></li>
+            <li class="list-group-item"><span style="font-size:1.25em;" class="lang" key="changes2">თქვენი დიზაინის დირექტივა</span></li>
+            <li class="list-group-item"><span style="font-size:1.25em;" class="lang" key="changes3">mYsql - გამოგვაქვს ინფორმაცია სტატიის შესახებ</span></li>
         </ul>
     </li>
-    <li ><l class="lang" key="changes">ცვილელება - ფაილში</l>
-        <ul>
-            <li><span style="font-size:1.25em;">engine/engine.php</span></li>
-            <li><span style="font-size:1.25em;" class="lang" key="changes2">თქვენი დიზაინის დირექტივა</span></li>
-            <li><span style="font-size:1.25em;" class="lang" key="changes3">mYsql - გამოგვაქვს ინფორმაცია სტატიის შესახებ</span></li>
-        </ul>
-    </li>
-    <li class="lang" key="shortstory">ეს არის პლაგინი , რომელიც დაგეხმარებათ აჩვენოთ თქვენს მომხმარებლებს სტატიის - სიახლის - დოკუმენტაცია ცალკეულ გვერდზე.
+    <li class="list-group-item lang" key="shortstory">ეს არის პლაგინი , რომელიც დაგეხმარებათ აჩვენოთ თქვენს მომხმარებლებს სტატიის - სიახლის - დოკუმენტაცია ცალკეულ გვერდზე.
         პლაგინი გამოადგებათ დეველოპერებს.</li>
-    <li><span style="color:rgb(56,56,56);" > <l class="lang" key="shortstory2">პლაგინი იყენებს სრულიად დამოუკიდებელ ბმულს. სიმარტივისთვის</l> <l style="color:rgb(227,55,55);" class="lang" key="shortstory2plus">დემო გვერდის საჩვებებლად გამოვიყენეთ დამატებითი ველები</l></span></li>
+    <li class="list-group-item"><span style="color:rgb(56,56,56);" > <l class="lang" key="shortstory2">პლაგინი იყენებს სრულიად დამოუკიდებელ ბმულს. სიმარტივისთვის</l> <l style="color:rgb(227,55,55);" class="lang" key="shortstory2plus">დემო გვერდის საჩვებებლად გამოვიყენეთ დამატებითი ველები</l></span></li>
 
 </ul>
 </p>
@@ -235,46 +261,45 @@ display: block;
           <hr class="pb-4 mb-1">
 
         </br>
-          <ol>
-    <li class="lang" key="instr1">ატვირთეთ პლუგინი საიტზე</li>
-    <li class="lang" key="instr2">შექმენით დამატებითი ველი </li>
-    <li><lang class="lang" key="instr112">აუცილებელია დამატებითი ველები იყოს</lang> <code>Several strings.</code> </li>
-    <li><lang class="lang" key="instr113">შეგიძლიათ გამოიყენოთ: </lang> <code>/engine/data/xfields.txt</code></li><li><pre class=\"language-markup\"><code>intro|შესავალი||textarea||1|0|1|0|||0|0||||||||||||||
+    <li class="list-group-item lang" key="instr1">ატვირთეთ პლუგინი საიტზე</li>
+    <li class="list-group-item lang" key="instr2">შექმენით დამატებითი ველი </li>
+    <li class="list-group-item"><lang class="lang" key="instr112">აუცილებელია დამატებითი ველები იყოს</lang> <code>Several strings.</code> </li>
+    <li class="list-group-item"><lang class="lang" key="instr113">შეგიძლიათ გამოიყენოთ: </lang> <code>/engine/data/xfields.txt</code></li>
+      <pre class="language-markup"><code>intro|შესავალი||textarea||1|0|1|0|||0|0||||||||||||||
         video|ვიდეო გაკვეთლი||text|HfKUobOHrwc|1|0|0|0|||0|0||||||||||||||
         install|ინსტალაცია||textarea||1|0|1|0|||0|0||||||||||||||
         coding|კოდირება||textarea||1|0|1|0|||0|0||||||||||||||
         gamosadegari|გამოყენებული მატერიალი||textarea||1|0|1|0|||0|0|||||||||||||</code></pre>
-<ul>
-  <li class="lang" key="instr3">დამატებითი ველი იცვლება ფაილში /engine/ticcix/mods/docs.php ველი #17 - #21</li>
-</ul>
+  <li class="list-group-item list-group-item-info lang" key="instr3">დამატებითი ველი იცვლება ფაილში /engine/ticcix/mods/docs.php ველი #17 - #21</li>
     </li>
-    <li ><l class="lang" key="instr4">main.tpl-ში დასაწყისში და დასასრულში დასვით </l><code>[not-aviable=demo] [/not-aviable] </code><br><l class="lang" key="instr4_1">დასასასრულის შემდეგ ჩასვით </l><code>[aviable=demo]{content}[/aviable]</code></li>
-    <li ><l class="lang" key="instr5">Fullstory.tpl - ში გამოიყენეთ შემდეგი ბმულით გადამისამართება</l> <code>&lt;a href="/view/{news-id}/docs" rel="nofollow"&gt;დოკუმენტაცია&lt;/a&gt;</code></li>
-    <li ><l class="lang" key="instr6">docs.tpl <- დოკუმენტაცია გვერდის დიზაინი. </l>
- <ul>
-   <li><code>{title}</code>- <l class="lang" key="instr7" >სტატიის სახელი</l></li>
-   <li><code>{intro} , {video} , {install} , {coding} , {gamosadegari}</code>- <l class="lang" key="instr8" >დამატებით ველში მითითებული ბმული</l></li>
-   <li><code>{full-link}</code>- <l class="lang" key="instr9">სტატიის მისამართი</l></li>
-   <li><code>{description}</code>- <l class="lang" key="instr10" >სტატიის მეტა აღწერა</l></li>
-   <li><code>{keywords}</code>- <l class="lang" key="instr11" >სტატიის მეტა ტეგები</l></li>
+    <li  class="list-group-item"><l class="lang" key="instr4">main.tpl-ში დასაწყისში და დასასრულში დასვით</l></li>
+<pre class="language-markup"><code>[not-aviable=demo] [/not-aviable] </code></pre>
+<li class="list-group-item"><l class="lang" key="instr4_1">დასასასრულის შემდეგ ჩასვით </l></li><pre class="language-markup"><code>[aviable=demo]{content}[/aviable]</code></pre>
+    <li  class="list-group-item"><l class="lang" key="instr5">Fullstory.tpl - ში გამოიყენეთ შემდეგი ბმულით გადამისამართება</l> </li>
+    <pre class="language-markup"><code>&lt;a href="/view/{news-id}/docs" rel="nofollow"&gt;დოკუმენტაცია&lt;/a&gt;</code></pre>
+    <li  class="list-group-item list-group-item-info"><l class="lang" key="instr6">docs.tpl <- დოკუმენტაცია გვერდის დიზაინი. </l> </li>
+ <ul class="list-group">
+   <li class="list-group-item"><code>{title}</code>- <l class="lang" key="instr7" >სტატიის სახელი</l></li>
+   <li class="list-group-item"><code>{intro} , {video} , {install} , {coding} , {gamosadegari}</code>- <l class="lang" key="instr8" >დამატებით ველში მითითებული ბმული</l></li>
+   <li class="list-group-item"><code>{full-link}</code>- <l class="lang" key="instr9">სტატიის მისამართი</l></li>
+   <li class="list-group-item"><code>{description}</code>- <l class="lang" key="instr10" >სტატიის მეტა აღწერა</l></li>
+   <li class="list-group-item"><code>{keywords}</code>- <l class="lang" key="instr11" >სტატიის მეტა ტეგები</l></li>
 
  </ul>
-    </li>
-</ol>
-
 <!-- Code block tabs-->
         <div class="pb-5">
           <div class="d-flex flex-wrap justify-content-between" id="htaccess">
-            <h5 class="mr-3"><p><span style="color:rgb(56,56,56);">.htaccess</span></h5>
+            <h5 class="mr-3"><p><span style="color:rgb(56,56,56);"></span></h5>
           </div>
           <hr class="pb-4 mb-1">
           <div class="tab-content">
             <div class="tab-pane fade show active" id="html" role="tabpanel">
+              <li class="list-group-item list-group-item-danger">.htaccess </li>
               <pre class="text-md"><code><l class="lang" key="instr12">RewriteEngine On - ქვემოთ</l></code></pre>
             </div>
           </div>
-          <div>
-                       <l class="lang" key="instr13">მოათავსეთ</l>   <pre class="text-md"><code>  RewriteRule ^view/([0-9]+)/docs(/?)+$ index.php?do=docs&id_news=$1 [L]</code></pre>
+          <div >
+                       <li class="list-group-item"><l class="lang" key="instr13">მოათავსეთ</l> </li>  <pre class="text-md"><code>  RewriteRule ^view/([0-9]+)/docs(/?)+$ index.php?do=docs&id_news=$1 [L]</code></pre>
           </div>
         </div>
       </div>
@@ -293,72 +318,72 @@ display: block;
 /*# sourceMappingURL=theme.min.css.map */
 .btn-facebook:hover {
     box-shadow:0 5px 8px rgba(26,35,126,0.25);
-	background:#3949AB;
-	background:-webkit-linear-gradient(left,#3949AB 0%,#2196F3 100%);
-	background:linear-gradient(to right,#3949AB 0%,#2196F3 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3949AB',endColorstr='#2196F3',GradientType=1);
+  background:#3949AB;
+  background:-webkit-linear-gradient(left,#3949AB 0%,#2196F3 100%);
+  background:linear-gradient(to right,#3949AB 0%,#2196F3 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3949AB',endColorstr='#2196F3',GradientType=1);
     background-size:400%;
     color: white;
-	-webkit-animation:Gradient 1s ease infinite;
-	animation:Gradient 1s ease infinite
+  -webkit-animation:Gradient 1s ease infinite;
+  animation:Gradient 1s ease infinite
 }
 .btn-github:hover {
     color:rgba(33,33,33,1);
-	box-shadow:0 5px 8px rgba(0,0,0,0.25);
-	background:#ECEFF1;
-	background:-webkit-linear-gradient(left,#ECEFF1 0%,#B0BEC5 100%);
-	background:linear-gradient(to right,#ECEFF1 0%,#B0BEC5 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ECEFF1',endColorstr='#B0BEC5',GradientType=1);
-	background-size:400%;
-	-webkit-animation:Gradient 1s ease infinite;
-	animation:Gradient 1s ease infinite
+  box-shadow:0 5px 8px rgba(0,0,0,0.25);
+  background:#ECEFF1;
+  background:-webkit-linear-gradient(left,#ECEFF1 0%,#B0BEC5 100%);
+  background:linear-gradient(to right,#ECEFF1 0%,#B0BEC5 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ECEFF1',endColorstr='#B0BEC5',GradientType=1);
+  background-size:400%;
+  -webkit-animation:Gradient 1s ease infinite;
+  animation:Gradient 1s ease infinite
 }
 
 .btn-youtube:hover {
     box-shadow:0 5px 8px rgba(244,67,54,0.25);
-	background:#F44336;
-	background:-webkit-linear-gradient(left,#F44336 0%,#FF1744 100%);
-	background:linear-gradient(to right,#F44336 0%,#FF1744 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#F44336',endColorstr='#FF1744',GradientType=1);
+  background:#F44336;
+  background:-webkit-linear-gradient(left,#F44336 0%,#FF1744 100%);
+  background:linear-gradient(to right,#F44336 0%,#FF1744 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#F44336',endColorstr='#FF1744',GradientType=1);
     background-size:400%;
     color: white;
-	-webkit-animation:Gradient 1s ease infinite;
-	animation:Gradient 1s ease infinite
-   
+  -webkit-animation:Gradient 1s ease infinite;
+  animation:Gradient 1s ease infinite
+
 }
 
 @-webkit-keyframes Gradient {
-	0%
-	{
-		background-position:0 50%
-	}
+  0%
+  {
+    background-position:0 50%
+  }
 
-	50%
-	{
-		background-position:100% 50%
-	}
+  50%
+  {
+    background-position:100% 50%
+  }
 
-	100%
-	{
-		background-position:0 50%
-	}
+  100%
+  {
+    background-position:0 50%
+  }
 }
 
 @keyframes Gradient {
-	0%
-	{
-		background-position:0 50%
-	}
+  0%
+  {
+    background-position:0 50%
+  }
 
-	50%
-	{
-		background-position:100% 50%
-	}
+  50%
+  {
+    background-position:100% 50%
+  }
 
-	100%
-	{
-		background-position:0 50%
-	}
+  100%
+  {
+    background-position:0 50%
+  }
 }
 
     </style>
