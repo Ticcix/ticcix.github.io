@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>შეტყობინება ინტერნეტთან კავშირის შესახებ Bootstrap 4 & javascript</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+      <link rel="stylesheet" href="https://cdn.web-fonts.ge/fonts/bpg-arial-caps/css/bpg-arial-caps.min.css">
+      <style type="text/css">
+        /* CSS Simple Pre Code */
+pre {
+    background: #333;
+    white-space: pre;
+    word-wrap: break-word;
+    overflow: auto;
+}
+
+pre.code {
+    margin: 20px 25px;
+    border-radius: 4px;
+    border: 1px solid #292929;
+    position: relative;
+}
+
+pre.code label {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    color: #ddd;
+    position: absolute;
+    left: 1px;
+    top: 15px;
+    text-align: center;
+    width: 60px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+}
+
+pre.code code {
+    font-family: "Inconsolata","Monaco","Consolas","Andale Mono","Bitstream Vera Sans Mono","Courier New",Courier,monospace;
+    display: block;
+    margin: 0 0 0 60px;
+    padding: 15px 16px 14px;
+    border-left: 1px solid #555;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 19px;
+    color: #ddd;
+}
+
+pre::after {
+    content: "2X კლიკი კოპირება";
+    font-family: bpg arial caps;
+    padding: 0;
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 18px;
+    top: 14px;
+    font-size: 12px;
+    color: #ddd;
+    line-height: 20px;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+pre:hover::after {
+    opacity: 0;
+    visibility: visible;
+}
+
+pre.code-css code {
+    color: #91a7ff;
+}
+
+pre.code-html code {
+    color: #aed581;
+}
+
+pre.code-javascript code {
+    color: #ffa726;
+}
+
+pre.code-jquery code {
+    color: #4dd0e1;
+}
+        body {
+          font-family: BPG Arial Caps;
+          background: #eaeaea;
+        }
+        .container {
+
+color: #303030;
+        }
+      </style>
+    </head>
+    <body>
+
+      <div class="container">
+        <br />
+        <br />
+        <h1 align="center">შეტყობინება ინტერნეტთან კავშირის შესახებ Bootstrap 4 & javascript</h1>
+        <br />
+
+      </div>
+<div class="code">
+    <pre class="code code-html"><label>HTML</label><code>&lt;div class="toast" style="position: absolute; top: 25px; right: 25px;"&gt;
+    &lt;div class="toast-header"&gt;
+        &lt;i class="bi bi-wifi"&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        &lt;strong class="mr-auto"&gt;&lt;span class="text-success"&gt;ინტერნეტთან კავშირი აღდგა&lt;/span&gt;&lt;/strong&gt;
+        &lt;button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"&gt;
+            &lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="toast-body"&gt;
+        ინტერნეტი ჩართულია.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+
+var status = 'online';
+var current_status = 'online';
+
+function check_internet_connection()
+{
+    if(navigator.onLine)
+    {
+        status = 'online';
+    }
+    else
+    {
+        status = 'offline';
+    }
+
+    if(current_status != status)
+    {
+        if(status == 'online')
+        {
+            $('i.bi').addClass('bi-wifi');
+            $('i.bi').removeClass('bi-wifi-off');
+            $('.mr-auto').html("&lt;span class='text-success'&gt;ინტერნეტთან კავშირი აღდგა&lt;/span&gt;");
+            $('.toast-body').text('ინტერნეტი ჩართულია.');
+        }
+        else
+        {
+            $('i.bi').addClass('bi-wifi-off');
+            $('i.bi').removeClass('bi-wifi');
+            $('.mr-auto').html("&lt;span class='text-danger'&gt;ინტერნეტთან კავშირი განწყდა&lt;/span&gt;");
+            $('.toast-body').text('შეამოწმეთ შეერთება.')
+        }
+
+        current_status = status;
+
+        $('.toast').toast({
+            autohide: false
+        });
+
+        $('.toast').toast('show');
+    }
+}
+
+check_internet_connection();
+
+setInterval(function(){
+    check_internet_connection();
+}, 1000);
+
+&lt;/script&gt;</code></pre>
+</div>
+
+    </body>
+</html>
+
+<div class="toast" style="position: absolute; top: 25px; right: 25px;">
+    <div class="toast-header">
+        <i class="bi bi-wifi"></i>&nbsp;&nbsp;&nbsp;
+        <strong class="mr-auto"><span class="text-success">ინტერნეტთან კავშირი აღდგა</span></strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body">
+        ინტერნეტი ჩართულია.
+    </div>
+</div>
+
+<script>
+
+var status = 'online';
+var current_status = 'online';
+
+function check_internet_connection()
+{
+    if(navigator.onLine)
+    {
+        status = 'online';
+    }
+    else
+    {
+        status = 'offline';
+    }
+
+    //if(current_status != status)
+    //{
+        if(status == 'online')
+        {
+            $('i.bi').addClass('bi-wifi');
+            $('i.bi').removeClass('bi-wifi-off');
+            $('.mr-auto').html("<span class='text-success'>ინტერნეტთან კავშირი აღდგა</span>");
+            $('.toast-body').text('ინტერნეტი ჩართულია.');
+        }
+        else
+        {
+            $('i.bi').addClass('bi-wifi-off');
+            $('i.bi').removeClass('bi-wifi');
+            $('.mr-auto').html("<span class='text-danger'>ინტერნეტთან კავშირი განწყდა</span>");
+            $('.toast-body').text('შეამოწმეთ შეერთება.')
+        }
+
+        current_status = status;
+
+        $('.toast').toast({
+            autohide:false
+        });
+
+        $('.toast').toast('show');
+    //}
+}
+
+check_internet_connection();
+
+setInterval(function(){
+    check_internet_connection();
+}, 1000);
+
+</script>
+<script type="text/javascript"> $('i[rel="pre"]').replaceWith(function() {
+    return $('<pre><code>' + $(this).html() + '</code></pre>');
+});
+var pres = document.querySelectorAll('pre,kbd,blockquote');
+for (var i = 0; i < pres.length; i++) {
+  pres[i].addEventListener("dblclick", function () {
+    var selection = getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(this);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }, false);
+}</script>
+
