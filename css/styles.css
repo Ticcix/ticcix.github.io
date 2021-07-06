@@ -207,7 +207,10 @@ width: 120px;
 
 
 }
-
+.toast{
+  background: url("https://i.imgur.com/1tHb2pA.jpg");
+ ;
+}
 .download_page{
 	background: url("https://i.imgur.com/1ZiJo9H.png");
  ;
