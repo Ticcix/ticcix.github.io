@@ -336,7 +336,7 @@ background: #141413;
 .menu ul li.icon-github:before {
 content: '\f09b';
 font-family: 'Font Awesome 5 Brands';
-color: #303030;
+color: #eaeaea;
 font-size: 35px;
 text-align: center;
 display: block;
@@ -366,7 +366,7 @@ margin-left: -25px
 .menu ul li.icon-contact:before {
 content: '\f0e0';
 font-family: 'Font Awesome 5 Free';
-color: #303030;
+color: #eaeaea;
 font-size: 35px;
 text-align: center;
 display: block;
