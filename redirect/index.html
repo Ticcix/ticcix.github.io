@@ -168,11 +168,11 @@ if( !empty($_SERVER['QUERY_STRING']) ) {
   &lt;noindex&gt;&lt;br /&gt;&lt;br /&gt;&lt;center&gt;თქვენ გადადიხართ გარე ბმულზე: &lt;br /&gt;&lt;br /&gt;
   &lt;div id="waiting"&gt;&lt;/div&gt;
   &lt;noscript&gt;დააჭირეთ&lt;a href="{$_SERVER['QUERY_STRING']}" rel="nofollow"&gt;აქ&lt;/a&gt; თუ ბრაუზერმა არ გადაგამისამართათ ავტომატურად!&lt;/noscript&gt;&lt;/center&gt;&lt;/noindex&gt;
-  &lt;script type='text/jаvascript'&gt;
+  &lt;script type='text/javascript'&gt;
   function countdown(sec) {
     sec--;
     if( sec &gt; 0 ) {
-      document.getElementById("waiting").innerHTML = 'Осталось '+sec+'c.';
+      document.getElementById("waiting").innerHTML = 'დარჩა '+sec+' წამი.';
       window.setTimeout("countdown("+sec+")", 1000);
     } else { 
       document.getElementById("waiting").innerHTML = 'დააჭირეთ&lt;a href="{$_SERVER['QUERY_STRING']}" rel="nofollow"&gt;აქ&lt;/a&gt; თუ ბრაუზერმა არ გადაგამისამართათ ავტომატურად!';
