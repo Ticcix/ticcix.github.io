@@ -6,8 +6,9 @@
     <title>September Schedule</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f2f2f7;
+            color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -18,89 +19,101 @@
 
         .schedule-container {
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            width: 350px;
         }
 
         .schedule {
             display: grid;
-            grid-template-columns: repeat(8, 50px);
+            grid-template-columns: repeat(7, 1fr);
             grid-gap: 8px;
             margin: 0 auto;
+            text-align: center;
         }
 
-        .header span {
-            font-weight: bold;
-            text-align: center;
+        .header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #8e8e93;
         }
 
         .day {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 50px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            font-weight: bold;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 16px;
             cursor: pointer;
             user-select: none;
+            transition: background-color 0.2s, color 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        .empty {
+        .day.empty {
             background-color: transparent;
+            box-shadow: none;
             cursor: default;
         }
 
         .shift {
-            background-color: #4CAF50;
+            background-color: #34c759;
             color: white;
         }
 
         .off {
-            background-color: #FF5722;
+            background-color: #ff3b30;
             color: white;
         }
 
         .extra {
-            background-color: #2196F3;
+            background-color: #007aff;
             color: white;
         }
 
         .legend {
             margin-top: 20px;
+            font-size: 14px;
+            color: #8e8e93;
         }
 
         .legend p {
             display: flex;
             align-items: center;
-            font-weight: bold;
+            font-weight: 500;
             margin: 5px 0;
         }
 
         .legend span {
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            border-radius: 3px;
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            border-radius: 4px;
         }
 
         .legend-shift {
-            background-color: #4CAF50;
+            background-color: #34c759;
         }
 
         .legend-off {
-            background-color: #FF5722;
+            background-color: #ff3b30;
         }
 
         .legend-extra {
-            background-color: #2196F3;
+            background-color: #007aff;
         }
 
         .statistics {
             margin-top: 20px;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: 500;
         }
 
         .statistics span {
@@ -113,7 +126,6 @@
     <div class="schedule-container">
         <div class="schedule">
             <div class="header">
-                <span></span>
                 <span>Mon</span>
                 <span>Tue</span>
                 <span>Wed</span>
