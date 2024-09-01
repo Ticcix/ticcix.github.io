@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>September Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .schedule {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-gap: 5px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header span {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .week {
+            display: contents;
+        }
+
+        .day {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .empty {
+            background-color: transparent;
+            cursor: default;
+        }
+
+        .shift {
+            background-color: #ADD8E6;
+        }
+
+        .off {
+            background-color: #ffcccb;
+        }
+
+        .extra {
+            background-color: #90EE90;
+        }
+
+        .legend {
+            margin-top: 20px;
+        }
+
+        .legend p {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .legend span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+
+        .legend-shift {
+            background-color: #ADD8E6;
+        }
+
+        .legend-off {
+            background-color: #ffcccb;
+        }
+
+        .legend-extra {
+            background-color: #90EE90;
+        }
+    </style>
+</head>
+<body>
+    <div class="schedule">
+        <div class="header">
+            <span></span>
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+            <span>Sun</span>
+        </div>
+        <div class="week">
+            <span class="day" onclick="toggleDay(this)" data-day="1">1</span>
+            <span class="day" onclick="toggleDay(this)" data-day="2">2</span>
+            <span class="day" onclick="toggleDay(this)" data-day="3">3</span>
+            <span class="day" onclick="toggleDay(this)" data-day="4">4</span>
+            <span class="day" onclick="toggleDay(this)" data-day="5">5</span>
+            <span class="day" onclick="toggleDay(this)" data-day="6">6</span>
+            <span class="day" onclick="toggleDay(this)" data-day="7">7</span>
+        </div>
+        <div class="week">
+            <span class="day" onclick="toggleDay(this)" data-day="8">8</span>
+            <span class="day" onclick="toggleDay(this)" data-day="9">9</span>
+            <span class="day" onclick="toggleDay(this)" data-day="10">10</span>
+            <span class="day" onclick="toggleDay(this)" data-day="11">11</span>
+            <span class="day" onclick="toggleDay(this)" data-day="12">12</span>
+            <span class="day" onclick="toggleDay(this)" data-day="13">13</span>
+            <span class="day" onclick="toggleDay(this)" data-day="14">14</span>
+        </div>
+        <div class="week">
+            <span class="day" onclick="toggleDay(this)" data-day="15">15</span>
+            <span class="day" onclick="toggleDay(this)" data-day="16">16</span>
+            <span class="day" onclick="toggleDay(this)" data-day="17">17</span>
+            <span class="day" onclick="toggleDay(this)" data-day="18">18</span>
+            <span class="day" onclick="toggleDay(this)" data-day="19">19</span>
+            <span class="day" onclick="toggleDay(this)" data-day="20">20</span>
+            <span class="day" onclick="toggleDay(this)" data-day="21">21</span>
+        </div>
+        <div class="week">
+            <span class="day" onclick="toggleDay(this)" data-day="22">22</span>
+            <span class="day" onclick="toggleDay(this)" data-day="23">23</span>
+            <span class="day" onclick="toggleDay(this)" data-day="24">24</span>
+            <span class="day" onclick="toggleDay(this)" data-day="25">25</span>
+            <span class="day" onclick="toggleDay(this)" data-day="26">26</span>
+            <span class="day" onclick="toggleDay(this)" data-day="27">27</span>
+            <span class="day" onclick="toggleDay(this)" data-day="28">28</span>
+        </div>
+        <div class="week">
+            <span class="day" onclick="toggleDay(this)" data-day="29">29</span>
+            <span class="day" onclick="toggleDay(this)" data-day="30">30</span>
+            <span class="day empty"></span>
+            <span class="day empty"></span>
+            <span class="day empty"></span>
+            <span class="day empty"></span>
+            <span class="day empty"></span>
+        </div>
+    </div>
+
+    <div class="legend">
+        <p><span class="legend-shift"></span> Shift</p>
+        <p><span class="legend-off"></span> Off</p>
+        <p><span class="legend-extra"></span> Extra Shift</p>
+    </div>
+
+    <script>
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function toggleDay(element) {
+            if (element.classList.contains('shift')) {
+                element.classList.remove('shift');
+                element.classList.add('extra');
+            } else if (element.classList.contains('extra')) {
+                element.classList.remove('extra');
+                element.classList.add('off');
+            } else if (element.classList.contains('off')) {
+                element.classList.remove('off');
+                element.classList.add('shift');
+            }
+            saveState();
+        }
+
+        function saveState() {
+            const days = document.querySelectorAll('.day');
+            let state = {};
+            days.forEach(day => {
+                state[day.getAttribute('data-day')] = day.className.replace('day ', '');
+            });
+            setCookie('schedule', JSON.stringify(state), 30);
+        }
+
+        function loadState() {
+            const state = JSON.parse(getCookie('schedule'));
+            if (state) {
+                const days = document.querySelectorAll('.day');
+                days.forEach(day => {
+                    const dayNumber = day.getAttribute('data-day');
+                    if (state[dayNumber]) {
+                        day.className = 'day ' + state[dayNumber];
+                    }
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            loadState();
+        });
+    </script>
+</body>
+</html>
