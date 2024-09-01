@@ -93,6 +93,16 @@
         .legend-extra {
             background-color: #90EE90;
         }
+
+        .statistics {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .statistics span {
+            display: inline-block;
+            margin-right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -160,6 +170,12 @@
         <p><span class="legend-extra"></span> Extra Shift</p>
     </div>
 
+    <div class="statistics">
+        <span id="shift-count">Shifts: 0</span>
+        <span id="off-count">Days Off: 0</span>
+        <span id="extra-count">Extra Shifts: 0</span>
+    </div>
+
     <script>
         function setCookie(name, value, days) {
             let expires = "";
@@ -196,6 +212,7 @@
                 element.classList.add('shift');
             }
             saveState();
+            updateStatistics();
         }
 
         function saveState() {
@@ -218,11 +235,4 @@
                     }
                 });
             }
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            loadState();
-        });
-    </script>
-</body>
-</html>
+            updateStatistics
