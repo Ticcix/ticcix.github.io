@@ -7,32 +7,32 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f7f7f7;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            padding: 20px;
             margin: 0;
+        }
+
+        .schedule-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
 
         .schedule {
             display: grid;
             grid-template-columns: repeat(8, 50px);
-            grid-gap: 5px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            grid-gap: 8px;
+            margin: 0 auto;
         }
 
         .header span {
             font-weight: bold;
             text-align: center;
-        }
-
-        .week {
-            display: contents;
         }
 
         .day {
@@ -44,6 +44,7 @@
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
+            user-select: none;
         }
 
         .empty {
@@ -52,15 +53,18 @@
         }
 
         .shift {
-            background-color: #ADD8E6;
+            background-color: #4CAF50;
+            color: white;
         }
 
         .off {
-            background-color: #ffcccb;
+            background-color: #FF5722;
+            color: white;
         }
 
         .extra {
-            background-color: #90EE90;
+            background-color: #2196F3;
+            color: white;
         }
 
         .legend {
@@ -83,15 +87,15 @@
         }
 
         .legend-shift {
-            background-color: #ADD8E6;
+            background-color: #4CAF50;
         }
 
         .legend-off {
-            background-color: #ffcccb;
+            background-color: #FF5722;
         }
 
         .legend-extra {
-            background-color: #90EE90;
+            background-color: #2196F3;
         }
 
         .statistics {
@@ -106,77 +110,80 @@
     </style>
 </head>
 <body>
-    <div class="schedule">
-        <div class="header">
-            <span></span>
-            <span>Mon</span>
-            <span>Tue</span>
-            <span>Wed</span>
-            <span>Thu</span>
-            <span>Fri</span>
-            <span>Sat</span>
-            <span>Sun</span>
+    <div class="schedule-container">
+        <div class="schedule">
+            <div class="header">
+                <span></span>
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+            </div>
+            <div class="week">
+                <span class="day" onclick="toggleDay(this)" data-day="1">1</span>
+                <span class="day" onclick="toggleDay(this)" data-day="2">2</span>
+                <span class="day" onclick="toggleDay(this)" data-day="3">3</span>
+                <span class="day" onclick="toggleDay(this)" data-day="4">4</span>
+                <span class="day" onclick="toggleDay(this)" data-day="5">5</span>
+                <span class="day" onclick="toggleDay(this)" data-day="6">6</span>
+                <span class="day" onclick="toggleDay(this)" data-day="7">7</span>
+            </div>
+            <div class="week">
+                <span class="day" onclick="toggleDay(this)" data-day="8">8</span>
+                <span class="day" onclick="toggleDay(this)" data-day="9">9</span>
+                <span class="day" onclick="toggleDay(this)" data-day="10">10</span>
+                <span class="day" onclick="toggleDay(this)" data-day="11">11</span>
+                <span class="day" onclick="toggleDay(this)" data-day="12">12</span>
+                <span class="day" onclick="toggleDay(this)" data-day="13">13</span>
+                <span class="day" onclick="toggleDay(this)" data-day="14">14</span>
+            </div>
+            <div class="week">
+                <span class="day" onclick="toggleDay(this)" data-day="15">15</span>
+                <span class="day" onclick="toggleDay(this)" data-day="16">16</span>
+                <span class="day" onclick="toggleDay(this)" data-day="17">17</span>
+                <span class="day" onclick="toggleDay(this)" data-day="18">18</span>
+                <span class="day" onclick="toggleDay(this)" data-day="19">19</span>
+                <span class="day" onclick="toggleDay(this)" data-day="20">20</span>
+                <span class="day" onclick="toggleDay(this)" data-day="21">21</span>
+            </div>
+            <div class="week">
+                <span class="day" onclick="toggleDay(this)" data-day="22">22</span>
+                <span class="day" onclick="toggleDay(this)" data-day="23">23</span>
+                <span class="day" onclick="toggleDay(this)" data-day="24">24</span>
+                <span class="day" onclick="toggleDay(this)" data-day="25">25</span>
+                <span class="day" onclick="toggleDay(this)" data-day="26">26</span>
+                <span class="day" onclick="toggleDay(this)" data-day="27">27</span>
+                <span class="day" onclick="toggleDay(this)" data-day="28">28</span>
+            </div>
+            <div class="week">
+                <span class="day" onclick="toggleDay(this)" data-day="29">29</span>
+                <span class="day" onclick="toggleDay(this)" data-day="30">30</span>
+                <span class="day empty"></span>
+                <span class="day empty"></span>
+                <span class="day empty"></span>
+                <span class="day empty"></span>
+                <span class="day empty"></span>
+            </div>
         </div>
-        <div class="week">
-            <span class="day" onclick="toggleDay(this)" data-day="1">1</span>
-            <span class="day" onclick="toggleDay(this)" data-day="2">2</span>
-            <span class="day" onclick="toggleDay(this)" data-day="3">3</span>
-            <span class="day" onclick="toggleDay(this)" data-day="4">4</span>
-            <span class="day" onclick="toggleDay(this)" data-day="5">5</span>
-            <span class="day" onclick="toggleDay(this)" data-day="6">6</span>
-            <span class="day" onclick="toggleDay(this)" data-day="7">7</span>
-        </div>
-        <div class="week">
-            <span class="day" onclick="toggleDay(this)" data-day="8">8</span>
-            <span class="day" onclick="toggleDay(this)" data-day="9">9</span>
-            <span class="day" onclick="toggleDay(this)" data-day="10">10</span>
-            <span class="day" onclick="toggleDay(this)" data-day="11">11</span>
-            <span class="day" onclick="toggleDay(this)" data-day="12">12</span>
-            <span class="day" onclick="toggleDay(this)" data-day="13">13</span>
-            <span class="day" onclick="toggleDay(this)" data-day="14">14</span>
-        </div>
-        <div class="week">
-            <span class="day" onclick="toggleDay(this)" data-day="15">15</span>
-            <span class="day" onclick="toggleDay(this)" data-day="16">16</span>
-            <span class="day" onclick="toggleDay(this)" data-day="17">17</span>
-            <span class="day" onclick="toggleDay(this)" data-day="18">18</span>
-            <span class="day" onclick="toggleDay(this)" data-day="19">19</span>
-            <span class="day" onclick="toggleDay(this)" data-day="20">20</span>
-            <span class="day" onclick="toggleDay(this)" data-day="21">21</span>
-        </div>
-        <div class="week">
-            <span class="day" onclick="toggleDay(this)" data-day="22">22</span>
-            <span class="day" onclick="toggleDay(this)" data-day="23">23</span>
-            <span class="day" onclick="toggleDay(this)" data-day="24">24</span>
-            <span class="day" onclick="toggleDay(this)" data-day="25">25</span>
-            <span class="day" onclick="toggleDay(this)" data-day="26">26</span>
-            <span class="day" onclick="toggleDay(this)" data-day="27">27</span>
-            <span class="day" onclick="toggleDay(this)" data-day="28">28</span>
-        </div>
-        <div class="week">
-            <span class="day" onclick="toggleDay(this)" data-day="29">29</span>
-            <span class="day" onclick="toggleDay(this)" data-day="30">30</span>
-            <span class="day empty"></span>
-            <span class="day empty"></span>
-            <span class="day empty"></span>
-            <span class="day empty"></span>
-            <span class="day empty"></span>
-        </div>
-    </div>
 
-    <div class="legend">
-        <p><span class="legend-shift"></span> Shift</p>
-        <p><span class="legend-off"></span> Off</p>
-        <p><span class="legend-extra"></span> Extra Shift</p>
-    </div>
+        <div class="legend">
+            <p><span class="legend-shift"></span> Shift</p>
+            <p><span class="legend-off"></span> Off</p>
+            <p><span class="legend-extra"></span> Extra Shift</p>
+        </div>
 
-    <div class="statistics">
-        <span id="shift-count">Shifts: 0</span>
-        <span id="off-count">Days Off: 0</span>
-        <span id="extra-count">Extra Shifts: 0</span>
+        <div class="statistics">
+            <span id="shift-count">Shifts: 0</span>
+            <span id="off-count">Days Off: 0</span>
+            <span id="extra-count">Extra Shifts: 0</span>
+        </div>
     </div>
 
     <script>
+        // Function to set a cookie
         function setCookie(name, value, days) {
             let expires = "";
             if (days) {
@@ -187,17 +194,19 @@
             document.cookie = name + "=" + (value || "") + expires + "; path=/";
         }
 
+        // Function to get a cookie
         function getCookie(name) {
             const nameEQ = name + "=";
             const ca = document.cookie.split(';');
             for (let i = 0; i < ca.length; i++) {
                 let c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
             }
             return null;
         }
 
+        // Function to toggle the day state and update the statistics
         function toggleDay(element) {
             if (element.classList.contains('shift')) {
                 element.classList.remove('shift');
@@ -215,6 +224,7 @@
             updateStatistics();
         }
 
+        // Function to save the current state in cookies
         function saveState() {
             const days = document.querySelectorAll('.day');
             let state = {};
@@ -224,6 +234,7 @@
             setCookie('schedule', JSON.stringify(state), 30);
         }
 
+        // Function to load the saved state from cookies
         function loadState() {
             const state = JSON.parse(getCookie('schedule'));
             if (state) {
@@ -235,4 +246,27 @@
                     }
                 });
             }
-            updateStatistics
+            updateStatistics();
+        }
+
+        // Function to update the statistics
+        function updateStatistics() {
+            const days = document.querySelectorAll('.day');
+            let shiftCount = 0, offCount = 0, extraCount = 0;
+
+            days.forEach(day => {
+                if (day.classList.contains('shift')) shiftCount++;
+                if (day.classList.contains('off')) offCount++;
+                if (day.classList.contains('extra')) extraCount++;
+            });
+
+            document.getElementById('shift-count').textContent = `Shifts: ${shiftCount}`;
+            document.getElementById('off-count').textContent = `Days Off: ${offCount}`;
+            document.getElementById('extra-count').textContent = `Extra Shifts: ${extraCount}`;
+        }
+
+        // Load the saved state when the page loads
+        window.onload = loadState;
+    </script>
+</body>
+</html>
