@@ -3,282 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>September Schedule</title>
+    <title>Modern Calendar</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f2f2f7;
+            background-color: #e0e0e0;
             color: #333;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            height: 100vh;
             margin: 0;
         }
 
-        .schedule-container {
+        .calendar-container {
+            display: flex;
+            width: 800px;
             background-color: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
 
-        .schedule {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            grid-gap: 8px;
-            margin: 0 auto;
+        .side-panel {
+            background-color: #34c759;
+            color: #fff;
+            width: 250px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .side-panel h1 {
+            font-size: 100px;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .side-panel h2 {
+            font-size: 24px;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        .events {
+            font-size: 14px;
+            margin-top: 30px;
             text-align: center;
         }
 
-        .header {
+        .events p {
+            margin: 10px 0;
+        }
+
+        .events a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .calendar {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .calendar-header h2 {
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        .calendar-header .year {
+            display: flex;
+            align-items: center;
+        }
+
+        .calendar-header .year span {
+            margin: 0 10px;
+            font-size: 18px;
+            color: #888;
+        }
+
+        .calendar-header .year .prev,
+        .calendar-header .year .next {
+            font-size: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .weekdays {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            margin-bottom: 10px;
+            margin-top: 20px;
             font-size: 14px;
-            color: #8e8e93;
+            color: #888;
+        }
+
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-gap: 10px;
+            margin-top: 10px;
         }
 
         .day {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 40px;
-            background-color: #fff;
-            border-radius: 8px;
-            font-weight: 500;
+            height: 50px;
+            background-color: #f8f8f8;
+            border-radius: 50%;
             font-size: 16px;
             cursor: pointer;
             user-select: none;
-            transition: background-color 0.2s, color 0.2s;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .day.empty {
-            background-color: transparent;
-            box-shadow: none;
-            cursor: default;
-        }
-
-        .shift {
-            background-color: #34c759;
-            color: white;
-        }
-
-        .off {
+        .day.off {
             background-color: #ff3b30;
-            color: white;
+            color: #fff;
         }
 
-        .extra {
+        .day.shift {
+            background-color: #34c759;
+            color: #fff;
+        }
+
+        .day.extra {
             background-color: #007aff;
-            color: white;
+            color: #fff;
         }
 
-        .legend {
+        .months {
             margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
             font-size: 14px;
-            color: #8e8e93;
         }
 
-        .legend p {
+        .months span {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .months span.active,
+        .months span:hover {
+            background-color: #34c759;
+            color: #fff;
+        }
+
+        .create-event {
             display: flex;
             align-items: center;
-            font-weight: 500;
-            margin: 5px 0;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+            color: #888;
+            cursor: pointer;
         }
 
-        .legend span {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            border-radius: 4px;
-        }
-
-        .legend-shift {
+        .create-event:hover {
             background-color: #34c759;
+            color: #fff;
         }
 
-        .legend-off {
-            background-color: #ff3b30;
-        }
-
-        .legend-extra {
-            background-color: #007aff;
+        .create-event i {
+            font-size: 20px;
         }
 
         .statistics {
             margin-top: 20px;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .statistics span {
-            display: inline-block;
-            margin-right: 20px;
+            text-align: center;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <div class="schedule-container">
-        <div class="schedule">
-            <div class="header">
-                <span>Mon</span>
-                <span>Tue</span>
-                <span>Wed</span>
-                <span>Thu</span>
-                <span>Fri</span>
-                <span>Sat</span>
-                <span>Sun</span>
+    <div class="calendar-container">
+        <div class="side-panel">
+            <div>
+                <h1 id="day-number">27</h1>
+                <h2 id="day-name">THURSDAY</h2>
             </div>
-            <div class="week">
-                <span class="day" onclick="toggleDay(this)" data-day="1">1</span>
-                <span class="day" onclick="toggleDay(this)" data-day="2">2</span>
-                <span class="day" onclick="toggleDay(this)" data-day="3">3</span>
-                <span class="day" onclick="toggleDay(this)" data-day="4">4</span>
-                <span class="day" onclick="toggleDay(this)" data-day="5">5</span>
-                <span class="day" onclick="toggleDay(this)" data-day="6">6</span>
-                <span class="day" onclick="toggleDay(this)" data-day="7">7</span>
+            <div class="events">
+                <p>Current Events</p>
+                <p>• Day 09 Daily CSS Image</p>
+                <a href="#">See past events</a>
             </div>
-            <div class="week">
-                <span class="day" onclick="toggleDay(this)" data-day="8">8</span>
-                <span class="day" onclick="toggleDay(this)" data-day="9">9</span>
-                <span class="day" onclick="toggleDay(this)" data-day="10">10</span>
-                <span class="day" onclick="toggleDay(this)" data-day="11">11</span>
-                <span class="day" onclick="toggleDay(this)" data-day="12">12</span>
-                <span class="day" onclick="toggleDay(this)" data-day="13">13</span>
-                <span class="day" onclick="toggleDay(this)" data-day="14">14</span>
-            </div>
-            <div class="week">
-                <span class="day" onclick="toggleDay(this)" data-day="15">15</span>
-                <span class="day" onclick="toggleDay(this)" data-day="16">16</span>
-                <span class="day" onclick="toggleDay(this)" data-day="17">17</span>
-                <span class="day" onclick="toggleDay(this)" data-day="18">18</span>
-                <span class="day" onclick="toggleDay(this)" data-day="19">19</span>
-                <span class="day" onclick="toggleDay(this)" data-day="20">20</span>
-                <span class="day" onclick="toggleDay(this)" data-day="21">21</span>
-            </div>
-            <div class="week">
-                <span class="day" onclick="toggleDay(this)" data-day="22">22</span>
-                <span class="day" onclick="toggleDay(this)" data-day="23">23</span>
-                <span class="day" onclick="toggleDay(this)" data-day="24">24</span>
-                <span class="day" onclick="toggleDay(this)" data-day="25">25</span>
-                <span class="day" onclick="toggleDay(this)" data-day="26">26</span>
-                <span class="day" onclick="toggleDay(this)" data-day="27">27</span>
-                <span class="day" onclick="toggleDay(this)" data-day="28">28</span>
-            </div>
-            <div class="week">
-                <span class="day" onclick="toggleDay(this)" data-day="29">29</span>
-                <span class="day" onclick="toggleDay(this)" data-day="30">30</span>
-                <span class="day empty"></span>
-                <span class="day empty"></span>
-                <span class="day empty"></span>
-                <span class="day empty"></span>
-                <span class="day empty"></span>
+            <div class="create-event">
+                <span>Create an Event</span>
+                <i>+</i>
             </div>
         </div>
-
-        <div class="legend">
-            <p><span class="legend-shift"></span> Shift</p>
-            <p><span class="legend-off"></span> Off</p>
-            <p><span class="legend-extra"></span> Extra Shift</p>
-        </div>
-
-        <div class="statistics">
-            <span id="shift-count">Shifts: 0</span>
-            <span id="off-count">Days Off: 0</span>
-            <span id="extra-count">Extra Shifts: 0</span>
+        <div class="calendar">
+            <div class="calendar-header">
+                <h2 id="month">April</h2>
+                <div class="year">
+                    <span class="prev">&lt;</span>
+                    <span id="year">2017</span>
+                    <span class="next">&gt;</span>
+                </div>
+            </div>
+            <div class="months">
+                <span class="active">Jan</span>
+                <span>Feb</span>
+                <span>Mar</span>
+                <span>Apr</span>
+                <span>May</span>
+                <span>Jun</span>
+                <span>Jul</span>
+                <span>Aug</span>
+                <span>Sep</span>
+                <span>Oct</span>
+                <span>Nov</span>
+                <span>Dec</span>
+            </div>
+            <div class="weekdays">
+                <span>SUN</span>
+                <span>MON</span>
+                <span>TUE</span>
+                <span>WED</span>
+                <span>THU</span>
+                <span>FRI</span>
+                <span>SAT</span>
+            </div>
+            <div class="days">
+                <span class="day">26</span>
+                <span class="day">27</span>
+                <span class="day">28</span>
+                <span class="day">29</span>
+                <span class="day">30</span>
+                <span class="day">31</span>
+                <span class="day">01</span>
+                <span class="day">02</span>
+                <span class="day">03</span>
+                <span class="day">04</span>
+                <span class="day">05</span>
+                <span class="day">06</span>
+                <span class="day">07</span>
+                <span class="day">08</span>
+                <span class="day">09</span>
+                <span class="day">10</span>
+                <span class="day">11</span>
+                <span class="day">12</span>
+                <span class="day">13</span>
+                <span class="day">14</span>
+                <span class="day">15</span>
+                <span class="day">16</span>
+                <span class="day">17</span>
+                <span class="day">18</span>
+                <span class="day">19</span>
+                <span class="day">20</span>
+                <span class="day">21</span>
+                <span class="day">22</span>
+                <span class="day">23</span>
+                <span class="day">24</span>
+                <span class="day">25</span>
+            </div>
+            <div class="statistics">
+                <p>Shift Days: <span id="shift-count">0</span></p>
+                <p>Off Days: <span id="off-count">0</span></p>
+                <p>Extra Shift Days: <span id="extra-count">0</span></p>
+            </div>
         </div>
     </div>
-
     <script>
-        // Function to set a cookie
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const days = document.querySelectorAll(".day");
+            const shiftCountEl = document.getElementById("shift-count");
+            const offCountEl = document.getElementById("off-count");
+            const extraCountEl = document.getElementById("extra-count");
 
-        // Function to get a cookie
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
+            let shiftCount = 0;
+            let offCount = 0;
+            let extraCount = 0;
 
-        // Function to toggle the day state and update the statistics
-        function toggleDay(element) {
-            if (element.classList.contains('shift')) {
-                element.classList.remove('shift');
-                element.classList.add('extra');
-            } else if (element.classList.contains('extra')) {
-                element.classList.remove('extra');
-                element.classList.add('off');
-            } else if (element.classList.contains('off')) {
-                element.classList.remove('off');
-                element.classList.add('shift');
-            } else {
-                element.classList.add('shift');
-            }
-            saveState();
-            updateStatistics();
-        }
-
-        // Function to save the current state in cookies
-        function saveState() {
-            const days = document.querySelectorAll('.day');
-            let state = {};
-            days.forEach(day => {
-                state[day.getAttribute('data-day')] = day.className.replace('day ', '');
+            // Load saved states from cookies
+            days.forEach((day, index) => {
+                const savedState = getCookie(`day${index}`);
+                if (savedState) {
+                    day.classList.add(savedState);
+                    if (savedState === "shift") shiftCount++;
+                    if (savedState === "off") offCount++;
+                    if (savedState === "extra") extraCount++;
+                }
             });
-            setCookie('schedule', JSON.stringify(state), 30);
-        }
 
-        // Function to load the saved state from cookies
-        function loadState() {
-            const state = JSON.parse(getCookie('schedule'));
-            if (state) {
-                const days = document.querySelectorAll('.day');
-                days.forEach(day => {
-                    const dayNumber = day.getAttribute('data-day');
-                    if (state[dayNumber]) {
-                        day.className = 'day ' + state[dayNumber];
+            updateCounts();
+
+            days.forEach((day, index) => {
+                day.addEventListener("click", () => {
+                    if (day.classList.contains("shift")) {
+                        day.classList.remove("shift");
+                        day.classList.add("off");
+                        shiftCount--;
+                        offCount++;
+                        setCookie(`day${index}`, "off", 30);
+                    } else if (day.classList.contains("off")) {
+                        day.classList.remove("off");
+                        day.classList.add("extra");
+                        offCount--;
+                        extraCount++;
+                        setCookie(`day${index}`, "extra", 30);
+                    } else if (day.classList.contains("extra")) {
+                        day.classList.remove("extra");
+                        day.classList.add("shift");
+                        extraCount--;
+                        shiftCount++;
+                        setCookie(`day${index}`, "shift", 30);
+                    } else {
+                        day.classList.add("shift");
+                        shiftCount++;
+                        setCookie(`day${index}`, "shift", 30);
                     }
+                    updateCounts();
                 });
-            }
-            updateStatistics();
-        }
-
-        // Function to update the statistics
-        function updateStatistics() {
-            const days = document.querySelectorAll('.day');
-            let shiftCount = 0, offCount = 0, extraCount = 0;
-
-            days.forEach(day => {
-                if (day.classList.contains('shift')) shiftCount++;
-                if (day.classList.contains('off')) offCount++;
-                if (day.classList.contains('extra')) extraCount++;
             });
 
-            document.getElementById('shift-count').textContent = `Shifts: ${shiftCount}`;
-            document.getElementById('off-count').textContent = `Days Off: ${offCount}`;
-            document.getElementById('extra-count').textContent = `Extra Shifts: ${extraCount}`;
-        }
+            function updateCounts() {
+                shiftCountEl.textContent = shiftCount;
+                offCountEl.textContent = offCount;
+                extraCountEl.textContent = extraCount;
+            }
 
-        // Load the saved state when the page loads
-        window.onload = loadState;
+            function setCookie(name, value, days) {
+                const d = new Date();
+                d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = "expires=" + d.toUTCString();
+                document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            }
+
+            function getCookie(name) {
+                const nameEQ = name + "=";
+                const ca = document.cookie.split(';');
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+        });
     </script>
 </body>
 </html>
