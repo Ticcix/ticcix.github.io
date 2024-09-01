@@ -192,6 +192,8 @@
             } else if (element.classList.contains('off')) {
                 element.classList.remove('off');
                 element.classList.add('shift');
+            } else {
+                element.classList.add('shift');
             }
             saveState();
         }
